@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option csharp_namespace = "RigMagAPI";
+
+package gpus;
+
+service GPU {
+  rpc GPUGet (GPUGetRequest) returns (GPUGetResponse);
+  rpc GPUGetAll (GPUGetAllRequest) returns (stream GPUGetResponse);
+  rpc GPUGetAllByName(GPUGetAllByNameRequest) returns (stream GPUGetResponse);
+  rpc GPUSave(GPUSaveRequest) returns (GPUSaveResponse);
+  rpc GPUDelete(GPUDeleteRequest) returns (GPUDeleteResponse);
+}
+
+message GPUGetRequest {
+  int32 id = 1;
+}
+
+message GPUGetResponse{
+  int32 id = 1;
+  string name = 2;
+  float price = 3;
+  optional string issuedOn = 4;
+  optional string description = 5;
+  optional float warranty = 6;
+}
+
+message GPUGetAllRequest {
+
+}
+message GPUGetAllByNameRequest{
+  string name = 1;
+}
+message GPUSaveRequest{
+  int32 id = 1;
+  string name = 2;
+  float price = 3;
+  optional string issuedOn = 4;
+  optional string description = 5;
+  optional float warranty = 6;
+}
+
+message GPUSaveResponse{
+  bool success = 1;
+}
+
+message GPUDeleteRequest{
+  int32 id = 1;
+}
+
+message GPUDeleteResponse{
+  bool success = 1;
+}

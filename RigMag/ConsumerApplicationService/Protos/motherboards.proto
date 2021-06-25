@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+option csharp_namespace = "RigMagAPI";
+
+package motherboards;
+
+service Motherboard {
+  rpc MotherboardGet (MotherboardGetRequest) returns (MotherboardGetResponse);
+  rpc MotherboardGetAll (MotherboardGetAllRequest) returns (stream MotherboardGetResponse);
+  rpc MotherboardGetAllByName(MotherboardGetAllByNameRequest) returns (stream MotherboardGetResponse);
+  rpc MotherboardSave(MotherboardSaveRequest) returns (MotherboardSaveResponse);
+  rpc MotherboardDelete(MotherboardDeleteRequest) returns (MotherboardDeleteResponse);
+}
+
+message MotherboardGetRequest {
+  int32 id = 1;
+}
+
+message MotherboardGetResponse{
+  int32 id = 1;
+  string name = 2;
+  float price = 3;
+  optional string issuedOn = 4;
+  optional string description = 5;
+  optional float warranty = 6;
+}
+
+message MotherboardGetAllRequest {
+
+}
+message MotherboardGetAllByNameRequest{
+  string name = 1;
+}
+
+message MotherboardSaveRequest{
+  int32 id=1;
+  string name = 2;
+  float price = 3;
+  optional string issuedOn = 4;
+  optional string description = 5;
+  optional float warranty = 6;
+}
+
+message MotherboardSaveResponse{
+  bool success = 1;
+}
+
+message MotherboardDeleteRequest{
+  int32 id = 1;
+}
+
+message MotherboardDeleteResponse{
+  bool success = 1;
+}

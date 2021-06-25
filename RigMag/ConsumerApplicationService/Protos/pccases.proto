@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+option csharp_namespace = "RigMagAPI";
+
+package pccases;
+
+service PCCase {
+  rpc PCCaseGet (PCCaseGetRequest) returns (PCCaseGetResponse);
+  rpc PCCaseGetAll (PCCaseGetAllRequest) returns (stream PCCaseGetResponse);
+  rpc PCCaseGetAllByName(PCCaseGetAllByNameRequest) returns (stream PCCaseGetResponse);
+  rpc PCCaseSave(PCCaseSaveRequest) returns (PCCaseSaveResponse);
+  rpc PCCaseDelete(PCCaseDeleteRequest) returns (PCCaseDeleteResponse);
+}
+
+message PCCaseGetRequest {
+  int32 id = 1;
+}
+
+message PCCaseGetResponse{
+  int32 id = 1;
+  string name = 2;
+  float price = 3;
+  optional string issuedOn = 4;
+  optional string description = 5;
+  optional float warranty = 6;
+}
+
+message PCCaseGetAllRequest {
+
+}
+message PCCaseGetAllByNameRequest{
+  string name = 1;
+}
+
+message PCCaseSaveRequest{
+  int32 id=1;
+  string name = 2;
+  float price = 3;
+  optional string issuedOn = 4;
+  optional string description = 5;
+  optional float warranty = 6;
+}
+
+message PCCaseSaveResponse{
+  bool success = 1;
+}
+
+message PCCaseDeleteRequest{
+  int32 id = 1;
+}
+
+message PCCaseDeleteResponse{
+  bool success = 1;
+}

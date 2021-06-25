@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option csharp_namespace = "RigMagAPI";
+
+package psus;
+
+service PSU {
+  rpc PSUGet (PSUGetRequest) returns (PSUGetResponse);
+  rpc PSUGetAll (PSUGetAllRequest) returns (stream PSUGetResponse);
+  rpc PSUGetAllByName(PSUGetAllByNameRequest) returns (stream PSUGetResponse);
+  rpc PSUSave(PSUSaveRequest) returns (PSUSaveResponse);
+  rpc PSUDelete(PSUDeleteRequest) returns (PSUDeleteResponse);
+}
+
+message PSUGetRequest {
+  int32 id = 1;
+}
+
+message PSUGetResponse{
+  int32 id = 1;
+  string name = 2;
+  float price = 3;
+  optional string issuedOn = 4;
+  optional string description = 5;
+  optional float warranty = 6;
+}
+
+message PSUGetAllRequest {
+
+}
+message PSUGetAllByNameRequest{
+  string name = 1;
+}
+message PSUSaveRequest{
+  int32 id=1;
+  string name = 2;
+  float price = 3;
+  optional string issuedOn = 4;
+  optional string description = 5;
+  optional float warranty = 6;
+}
+
+message PSUSaveResponse{
+  bool success = 1;
+}
+
+message PSUDeleteRequest{
+  int32 id = 1;
+}
+
+message PSUDeleteResponse{
+  bool success = 1;
+}
