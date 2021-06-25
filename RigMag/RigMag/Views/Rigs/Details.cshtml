@@ -1,0 +1,51 @@
+@model RigVM
+
+@{
+    ViewData["Title"] = $"Rig view";
+}
+
+
+<div class="row justify-content-center m-3">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-header">
+                <h1>@Model.Name</h1>
+            </div>
+
+            <div class="card-body text-center">
+                <img class="card-img-top" src="@Model.ImagePath"/>
+
+                <h4 class="card-text text-left">Price: @Model.Price</h4>
+                @if (Model.IssuedOn != null)
+                {
+                    <h4 class="card-text text-left">Issued on: @Model.IssuedOn</h4>
+                }
+                @if (Model.Warranty != null)
+                {
+                    <h4 class="card-text text-left">Warranty: @Model.Warranty years</h4>
+                }
+                <h4 class="card-text text-left">Cooler: @Model.CoolerVm.Name</h4>
+                <h4 class="card-text text-left">CPU: @Model.CpuVm.Name</h4>
+                <h4 class="card-text text-left">Drive: @Model.DriveVm.Name</h4>
+                <h4 class="card-text text-left">GPU: @Model.GpuVm.Name</h4>
+                <h4 class="card-text text-left">Motherboard: @Model.MotherboardVm.Name</h4>
+                <h4 class="card-text text-left">Case: @Model.PcCaseVm.Name</h4>
+                <h4 class="card-text text-left">PSU: @Model.PsuVm.Name</h4>
+                <h4 class="card-text text-left">RAM: @Model.RamVm.Name</h4>
+                @if (Model.Description != null)
+                {
+                    <h4 class="card-text text-left">Description:</h4>
+                    <br/>
+                    <p class="lead card-text text-left">@Model.Description</p>
+                }
+            </div>
+            <div class="card-footer text-center form-inline justify-content-center">
+                <a asp-controller="Rigs" asp-action="Browse" class="btn btn-primary m-1">Back</a>
+                <a asp-controller="Rigs" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-primary m-1">Edit</a>
+                <form method="post" asp-action="Delete" asp-route-id="@Model.Id">
+                    <button type="submit" class="btn btn-danger m-1">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
