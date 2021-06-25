@@ -1,2 +1,2 @@
-# DistributedApplications
+# Distributed Applications
 Distributed Applications project
