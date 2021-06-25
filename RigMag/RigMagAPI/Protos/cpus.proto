@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option csharp_namespace = "RigMagAPI";
+
+package cpus;
+
+service CPU {
+  rpc CPUGet (CPUGetRequest) returns (CPUGetResponse);
+  rpc CPUGetAll (CPUGetAllRequest) returns (stream CPUGetResponse);
+  rpc CPUGetAllByName(CPUGetAllByNameRequest) returns (stream CPUGetResponse);
+  rpc CPUSave(CPUSaveRequest) returns (CPUSaveResponse);
+  rpc CPUDelete(CPUDeleteRequest) returns (CPUDeleteResponse);
+}
+
+message CPUGetRequest {
+  int32 id = 1;
+}
+
+message CPUGetResponse{
+  int32 id = 1;
+  string name = 2;
+  float price = 3;
+  optional string issuedOn = 4;
+  optional string description = 5;
+  optional float warranty = 6;
+}
+
+message CPUGetAllRequest {
+
+}
+message CPUGetAllByNameRequest{
+  string name = 1;
+}
+message CPUSaveRequest{
+  int32 id = 1;
+  string name = 2;
+  float price = 3;
+  optional string issuedOn = 4;
+  optional string description = 5;
+  optional float warranty = 6;
+}
+
+message CPUSaveResponse{
+  bool success = 1;
+}
+
+message CPUDeleteRequest{
+  int32 id = 1;
+}
+
+message CPUDeleteResponse{
+  bool success = 1;
+}

@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+option csharp_namespace = "RigMagAPI";
+
+package rams;
+
+service RAM {
+  rpc RAMGet (RAMGetRequest) returns (RAMGetResponse);
+  rpc RAMGetAll (RAMGetAllRequest) returns (stream RAMGetResponse);
+  rpc RAMGetAllByName(RAMGetAllByNameRequest) returns (stream RAMGetResponse);
+  rpc RAMSave(RAMSaveRequest) returns (RAMSaveResponse);
+  rpc RAMDelete(RAMDeleteRequest) returns (RAMDeleteResponse);
+}
+
+message RAMGetRequest {
+  int32 id = 1;
+}
+
+message RAMGetResponse{
+  int32 id = 1;
+  string name = 2;
+  float price = 3;
+  optional string issuedOn = 4;
+  optional string description = 5;
+  optional float warranty = 6;
+}
+
+message RAMGetAllRequest {
+
+}
+message RAMGetAllByNameRequest{
+  string name = 1;
+}
+
+message RAMSaveRequest{
+  int32 id = 1;
+  string name = 2;
+  float price = 3;
+  optional string issuedOn = 4;
+  optional string description = 5;
+  optional float warranty = 6;
+}
+
+message RAMSaveResponse{
+  bool success = 1;
+}
+
+message RAMDeleteRequest{
+  int32 id = 1;
+}
+
+message RAMDeleteResponse{
+  bool success = 1;
+}

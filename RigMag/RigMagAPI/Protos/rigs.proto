@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+option csharp_namespace = "RigMagAPI";
+
+package rigs;
+
+service Rig {
+  rpc RigGet (RigGetRequest) returns (RigGetResponse);
+  rpc RigGetAll (RigGetAllRequest) returns (stream RigGetResponse);
+  rpc RigGetAllByName(RigGetAllByNameRequest) returns (stream RigGetResponse);
+  rpc RigSave(RigSaveRequest) returns (RigSaveResponse);
+  rpc RigDelete(RigDeleteRequest) returns (RigDeleteResponse);
+}
+
+message RigGetRequest {
+  int32 id = 1;
+}
+
+message RigGetResponse{
+  int32 id = 1;
+  string name = 2;
+  float price = 3;
+  optional string issuedOn = 4;
+  optional string description = 5;
+  optional float warranty = 6;
+  int32 cpuId = 7;
+  int32 coolerId = 8;
+  int32 driveId = 9;
+  int32 gpuId = 10;
+  int32 motherboardId = 11;
+  int32 pcCaseId = 12;
+  int32 psuId = 13;
+  int32 ramId = 14;
+}
+
+message RigGetAllRequest {
+
+}
+message RigGetAllByNameRequest{
+  string name = 1;
+}
+message RigSaveRequest{
+  int32 id = 1;
+  string name = 2;
+  float price = 3;
+  optional string issuedOn = 4;
+  optional string description = 5;
+  optional float warranty = 6;
+  int32 cpuId = 7;
+  int32 coolerId = 8;
+  int32 driveId = 9;
+  int32 gpuId = 10;
+  int32 motherboardId = 11;
+  int32 pcCaseId = 12;
+  int32 psuId = 13;
+  int32 ramId = 14;
+}
+
+message RigSaveResponse{
+  bool success = 1;
+}
+
+message RigDeleteRequest{
+  int32 id = 1;
+}
+
+message RigDeleteResponse{
+  bool success = 1;
+}

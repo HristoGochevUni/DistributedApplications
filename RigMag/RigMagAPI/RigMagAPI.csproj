@@ -1,0 +1,96 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Protobuf Include="Protos\coolers.proto">
+          <GrpcServices>Server</GrpcServices>
+          <Access>Public</Access>
+          <ProtoCompile>True</ProtoCompile>
+          <CompileOutputs>True</CompileOutputs>
+          <OutputDir>obj/Debug/net5.0/</OutputDir>
+          <Generator>MSBuild:Compile</Generator>
+        </Protobuf>
+        <Protobuf Include="Protos\cpus.proto">
+          <GrpcServices>Server</GrpcServices>
+          <Access>Public</Access>
+          <ProtoCompile>True</ProtoCompile>
+          <CompileOutputs>True</CompileOutputs>
+          <OutputDir>obj/Debug/net5.0/</OutputDir>
+          <Generator>MSBuild:Compile</Generator>
+        </Protobuf>
+        <Protobuf Include="Protos\drives.proto">
+          <GrpcServices>Server</GrpcServices>
+          <Access>Public</Access>
+          <ProtoCompile>True</ProtoCompile>
+          <CompileOutputs>True</CompileOutputs>
+          <OutputDir>obj/Debug/net5.0/</OutputDir>
+          <Generator>MSBuild:Compile</Generator>
+        </Protobuf>
+        <Protobuf Include="Protos\gpus.proto">
+          <GrpcServices>Server</GrpcServices>
+          <Access>Public</Access>
+          <ProtoCompile>True</ProtoCompile>
+          <CompileOutputs>True</CompileOutputs>
+          <OutputDir>obj/Debug/net5.0/</OutputDir>
+          <Generator>MSBuild:Compile</Generator>
+        </Protobuf>
+        <Protobuf Include="Protos\motherboards.proto">
+          <GrpcServices>Server</GrpcServices>
+          <Access>Public</Access>
+          <ProtoCompile>True</ProtoCompile>
+          <CompileOutputs>True</CompileOutputs>
+          <OutputDir>obj/Debug/net5.0/</OutputDir>
+          <Generator>MSBuild:Compile</Generator>
+        </Protobuf>
+        <Protobuf Include="Protos\pccases.proto">
+          <GrpcServices>Server</GrpcServices>
+          <Access>Public</Access>
+          <ProtoCompile>True</ProtoCompile>
+          <CompileOutputs>True</CompileOutputs>
+          <OutputDir>obj/Debug/net5.0/</OutputDir>
+          <Generator>MSBuild:Compile</Generator>
+        </Protobuf>
+        <Protobuf Include="Protos\psus.proto">
+          <GrpcServices>Server</GrpcServices>
+          <Access>Public</Access>
+          <ProtoCompile>True</ProtoCompile>
+          <CompileOutputs>True</CompileOutputs>
+          <OutputDir>obj/Debug/net5.0/</OutputDir>
+          <Generator>MSBuild:Compile</Generator>
+        </Protobuf>
+        <Protobuf Include="Protos\rams.proto">
+          <GrpcServices>Server</GrpcServices>
+          <Access>Public</Access>
+          <ProtoCompile>True</ProtoCompile>
+          <CompileOutputs>True</CompileOutputs>
+          <OutputDir>obj/Debug/net5.0/</OutputDir>
+          <Generator>MSBuild:Compile</Generator>
+        </Protobuf>
+        <Protobuf Include="Protos\rigs.proto">
+          <GrpcServices>Server</GrpcServices>
+          <Access>Public</Access>
+          <ProtoCompile>True</ProtoCompile>
+          <CompileOutputs>True</CompileOutputs>
+          <OutputDir>obj/Debug/net5.0/</OutputDir>
+          <Generator>MSBuild:Compile</Generator>
+        </Protobuf>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Grpc.AspNetCore" Version="2.37.0" />
+        <PackageReference Include="Grpc.AspNetCore.Server" Version="2.37.0" />
+        <PackageReference Include="Grpc.Tools" Version="2.38.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.7" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ApplicationService\ApplicationService.csproj" />
+    </ItemGroup>
+
+</Project>

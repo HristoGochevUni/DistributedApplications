@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+option csharp_namespace = "RigMagAPI";
+
+package coolers;
+
+service Cooler {
+  rpc CoolerGet (CoolerGetRequest) returns (CoolerGetResponse);
+  rpc CoolerGetAll (CoolerGetAllRequest) returns (stream CoolerGetResponse);
+  rpc CoolerGetAllByName(CoolerGetAllByNameRequest) returns (stream CoolerGetResponse);
+  rpc CoolerSave(CoolerSaveRequest) returns (CoolerSaveResponse);
+  rpc CoolerDelete(CoolerDeleteRequest) returns (CoolerDeleteResponse);
+}
+
+message CoolerGetRequest {
+  int32 id = 1;
+}
+
+
+message CoolerGetResponse{
+  int32 id = 1;
+  string name = 2;
+  float price = 3;
+  optional string issuedOn = 4;
+  optional string description = 5;
+  optional float warranty = 6;
+}
+
+message CoolerGetAllRequest {
+
+}
+
+message CoolerGetAllByNameRequest{
+  string name = 1;
+}
+
+message CoolerSaveRequest{
+  int32 id = 1;
+  string name = 2;
+  float price = 3;
+  optional string issuedOn = 4;
+  optional string description = 5;
+  optional float warranty = 6;
+}
+
+message CoolerSaveResponse{
+  bool success = 1;
+}
+
+message CoolerDeleteRequest{
+  int32 id = 1;
+}
+
+message CoolerDeleteResponse{
+  bool success = 1;
+}

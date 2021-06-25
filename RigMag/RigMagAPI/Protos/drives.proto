@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option csharp_namespace = "RigMagAPI";
+
+package drives;
+
+service Drive {
+  rpc DriveGet (DriveGetRequest) returns (DriveGetResponse);
+  rpc DriveGetAll (DriveGetAllRequest) returns (stream DriveGetResponse);
+  rpc DriveGetAllByName(DriveGetAllByNameRequest) returns (stream DriveGetResponse);
+  rpc DriveSave(DriveSaveRequest) returns (DriveSaveResponse);
+  rpc DriveDelete(DriveDeleteRequest) returns (DriveDeleteResponse);
+}
+
+message DriveGetRequest {
+  int32 id = 1;
+}
+
+message DriveGetResponse{
+  int32 id = 1;
+  string name = 2;
+  float price = 3;
+  optional string issuedOn = 4;
+  optional string description = 5;
+  optional float warranty = 6;
+}
+
+message DriveGetAllRequest {
+
+}
+message DriveGetAllByNameRequest{
+  string name = 1;
+}
+message DriveSaveRequest{
+  int32 id=1;
+  string name = 2;
+  float price = 3;
+  optional string issuedOn = 4;
+  optional string description = 5;
+  optional float warranty = 6;
+}
+
+message DriveSaveResponse{
+  bool success = 1;
+}
+
+message DriveDeleteRequest{
+  int32 id = 1;
+}
+
+message DriveDeleteResponse{
+  bool success = 1;
+}
